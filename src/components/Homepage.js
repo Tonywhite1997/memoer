@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LevelContext, CardContext } from "./Context";
+import Data from "./Data";
 
 export default function Homepage() {
+  const [level, setLevel] = useContext(LevelContext);
+  const [setCardData] = useContext(CardContext);
+
+  console.log(level);
+  function saveLevel(e) {
+    setLevel(e.target.value);
+  }
   return (
     <main className="main">
       <h3>How good is your memory?</h3>
@@ -9,12 +18,12 @@ export default function Homepage() {
         Check it out by playing <span>Memoer.</span>
       </h4>
       <label htmlFor="level">Choose Level</label>
-      <select id="level">
+      <select id="level" onChange={saveLevel}>
         <option>Easy</option>
         <option>Medium</option>
         <option>Hard</option>
         <option>Very Hard</option>
-        <option>impossible</option>
+        <option>Impossible</option>
       </select>
       <Link className="homepage--link" to="/Gamepage">
         Start

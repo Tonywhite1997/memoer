@@ -60,7 +60,7 @@
   cursor: pointer;
 }
 
-.main button {
+.main button, .main .main--gamepage .buttons .gamepage--link, .main--gamepage .buttons .main .gamepage--link {
   border: 2px solid #832293;
   padding: .5em 4em;
   font-weight: 600;
@@ -114,11 +114,12 @@
 .main--gamepage .card--div {
   margin-bottom: 1em;
   background-color: whitesmoke;
-  height: 60%;
+  height: 70%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (50px)[4];
       grid-template-columns: repeat(4, 50px);
+  gap: .5em;
   place-content: center;
 }
 
@@ -162,16 +163,14 @@
 
 .main--gamepage .card--div .card--container .card .card--front {
   position: absolute;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
   background-color: white;
   border: 1px solid #832293;
   color: black;
 }
 
-.main--gamepage .card--div .card--container .card .reveal {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+.main--gamepage .card--div .card--container .card .card--front i {
+  color: #832293;
+  font-size: 2rem;
 }
 
 .main--gamepage .buttons {
@@ -188,18 +187,21 @@
   padding: .3em 0;
 }
 
-.main--gamepage .buttons button {
+.main--gamepage .buttons button, .main--gamepage .buttons .gamepage--link {
   padding: .3em 1em;
   border: none;
   background-color: #832293;
   color: white;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.main--gamepage .buttons button:last-child {
+.main--gamepage .buttons .gamepage--link {
   border: 1px solid #832293;
   background-color: white;
   color: #832293;
+  padding: .1em 1em;
+  text-decoration: none;
 }
 
 .footer {
