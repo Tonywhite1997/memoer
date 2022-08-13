@@ -1,0 +1,75 @@
+.main{
+    position: relative;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    overflow: hidden;
+
+    h3{
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+
+    h4{
+        font-weight: 400;
+    }
+    span{
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #832293;
+    }
+
+    label{
+        background-color: #832293;
+        color: white;
+        padding: .5em 1.4em;
+        font-weight: 600;
+    }
+
+    select{
+        border: 2px solid #832293;
+        width: 144px;
+        height: 32px;
+        cursor: pointer;
+    }
+
+    button{
+        border: 2px solid #832293;
+        padding: .5em 4em;
+        font-weight: 600;
+        background-color: white;
+        border-radius: 100vmax;
+        cursor: pointer;
+    }
+
+    .homepage--link{
+        text-decoration: none;
+        color: #832293;
+        border: 2px solid #832293;
+        padding: .3em 2.8em;
+        margin-top: 1em;
+        font-weight: 600;
+        background-color: white;
+        border-radius: 100vmax;
+        cursor: pointer;
+    }
+
+    img{
+        position: absolute;
+        width: 200px;
+        z-index: -1;
+    }
+
+    .elipse1{
+        top: -1em;
+        right: -1em;
+    }
+
+    .elipse2{
+        bottom: -1.5em;
+        left: -1.5em;
+    }
+}

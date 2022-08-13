@@ -1,0 +1,256 @@
+.header {
+  background-color: #832293;
+  color: white;
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 2em;
+}
+
+.main {
+  position: relative;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1em;
+  overflow: hidden;
+}
+
+.main h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.main h4 {
+  font-weight: 400;
+}
+
+.main span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #832293;
+}
+
+.main label {
+  background-color: #832293;
+  color: white;
+  padding: .5em 1.4em;
+  font-weight: 600;
+}
+
+.main select {
+  border: 2px solid #832293;
+  width: 144px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.main button {
+  border: 2px solid #832293;
+  padding: .5em 4em;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 100vmax;
+  cursor: pointer;
+}
+
+.main .homepage--link {
+  text-decoration: none;
+  color: #832293;
+  border: 2px solid #832293;
+  padding: .3em 2.8em;
+  margin-top: 1em;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 100vmax;
+  cursor: pointer;
+}
+
+.main img {
+  position: absolute;
+  width: 200px;
+  z-index: -1;
+}
+
+.main .elipse1 {
+  top: -1em;
+  right: -1em;
+}
+
+.main .elipse2 {
+  bottom: -1.5em;
+  left: -1.5em;
+}
+
+.main--gamepage {
+  height: 80%;
+}
+
+.main--gamepage .level--div {
+  padding-left: 2em;
+  padding-block: .5em;
+  width: 200px;
+  margin-bottom: 1em;
+  background-color: #832293;
+  color: white;
+  border-bottom-right-radius: 40%;
+}
+
+.main--gamepage .card--div {
+  margin-bottom: 1em;
+  background-color: whitesmoke;
+  height: 60%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50px)[4];
+      grid-template-columns: repeat(4, 50px);
+  place-content: center;
+}
+
+.main--gamepage .card--div .card--container {
+  position: relative;
+  height: 50px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.main--gamepage .card--div .card--container .card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  cursor: pointer;
+}
+
+.main--gamepage .card--div .card--container .card .card--back, .main--gamepage .card--div .card--container .card .card--front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #832293;
+  color: white;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 5px;
+}
+
+.main--gamepage .card--div .card--container .card .card--front {
+  position: absolute;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background-color: white;
+  border: 1px solid #832293;
+  color: black;
+}
+
+.main--gamepage .card--div .card--container .card .reveal {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.main--gamepage .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: .5em;
+  padding: .3em 0;
+}
+
+.main--gamepage .buttons button {
+  padding: .3em 1em;
+  border: none;
+  background-color: #832293;
+  color: white;
+  font-weight: 600;
+}
+
+.main--gamepage .buttons button:last-child {
+  border: 1px solid #832293;
+  background-color: white;
+  color: #832293;
+}
+
+.footer {
+  height: 10%;
+  background-color: #832293;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2em;
+}
+
+.footer--social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .5em;
+}
+
+.footer--social .fa-facebook {
+  color: blue;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.footer--social .fa-github {
+  color: black;
+  background-color: white;
+  border-radius: 100%;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+}
+
+#root {
+  height: 100%;
+}
+/*# sourceMappingURL=root.css.map */
