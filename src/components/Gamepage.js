@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Card from "./card";
 import { LevelContext, CardContext } from "./Context";
@@ -67,7 +67,7 @@ function Gamepage() {
     loadGame();
   }, [level]);
 
-  console.log(cardData);
+  //   console.log(cardData);
 
   function restart() {
     loadGame();
@@ -93,6 +93,21 @@ function Gamepage() {
     };
   }
 
+  const cardRef = useRef();
+
+  function revealCard(index) {
+    setCards(
+      cards.map((card, i) => {
+        if (i === index) {
+          console.log(card.name);
+          return { ...card, isFlipped: true };
+        } else {
+          return card;
+        }
+      })
+    );
+  }
+
   return (
     <main className="main--gamepage">
       <div className="level--div">
@@ -102,7 +117,16 @@ function Gamepage() {
       </div>
       <div className="card--div" style={cardDivStyle}>
         {cards.map((card, index) => {
-          return <Card key={index} icon={card.url} cards={cards} />;
+          return (
+            <Card
+              key={index}
+              icon={card.url}
+              cards={cards}
+              card={card}
+              revealCard={() => revealCard(index)}
+              cardRef={cardRef}
+            />
+          );
         })}
       </div>
       <div className="buttons">

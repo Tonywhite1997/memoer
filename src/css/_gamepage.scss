@@ -50,7 +50,7 @@
     
                 .card--front{
                     position: absolute;
-                    // transform: rotateY(180deg);
+                    transform: rotateY(180deg);
                     @extend .card--back;
                     background-color: white;
                     border: 1px solid #832293;
@@ -62,9 +62,9 @@
                     }
                 }
 
-                &:hover{
-                    // transform: rotateY(180deg);
-                }
+                // .reveal{
+                //     transform: rotateY(180deg);
+                // }
 
             }
         }
@@ -96,4 +96,8 @@
             @extend button;
         }
     }
+}
+
+.reveal {
+    transform: rotateY(180deg);
 }
