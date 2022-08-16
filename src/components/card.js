@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ icon, cards, card, revealCard, cardRef }) {
+function Card({ icon, cards, card, revealCard }) {
   let containerStyle;
   let iconSize;
   if (cards.length >= 24) {
@@ -16,7 +16,6 @@ function Card({ icon, cards, card, revealCard, cardRef }) {
       <div
         className={card.isFlipped ? "card reveal" : "card"}
         onClick={revealCard}
-        ref={cardRef}
       >
         <div className="card--back">Tap</div>
         <div className="card--front">

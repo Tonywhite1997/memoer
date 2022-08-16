@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { LevelContext, CardContext } from "./Context";
-import Data from "./Data";
+import { LevelContext } from "./Context";
 
 export default function Homepage() {
   const [level, setLevel] = useContext(LevelContext);
-  const [setCardData] = useContext(CardContext);
 
   console.log(level);
   function saveLevel(e) {
@@ -28,8 +26,8 @@ export default function Homepage() {
       <Link className="homepage--link" to="/Gamepage">
         Start
       </Link>
-      <img src="../Ellipse 1.png" className="elipse1" />
-      <img src="../Ellipse 2.png" className="elipse2" />
+      <img src="../Ellipse 1.png" className="elipse1" alt="#" />
+      <img src="../Ellipse 2.png" className="elipse2" alt="#" />
     </main>
   );
 }
