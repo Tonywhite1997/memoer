@@ -284,7 +284,9 @@ function Gamepage() {
         })}
       </div>
       <div className="buttons">
-        <button onClick={restart}>Restart</button>
+        <button onClick={restart} className="restart--button">
+          Restart
+        </button>
         <Link className="gamepage--link" to="/" onClick={resetStates}>
           Quit
         </Link>

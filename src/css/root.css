@@ -49,18 +49,25 @@
 .main label {
   background-color: #832293;
   color: white;
-  padding: .5em 1.4em;
+  padding: .5em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
   font-weight: 600;
 }
 
 .main select {
   border: 2px solid #832293;
-  width: 144px;
+  width: 200px;
   height: 32px;
   cursor: pointer;
 }
 
-.main button, .main .main--gamepage .buttons .gamepage--link, .main--gamepage .buttons .main .gamepage--link {
+.main button, .main .main--gamepage .buttons .restart--button, .main--gamepage .buttons .main .restart--button, .main .main--gamepage .buttons .gamepage--link, .main--gamepage .buttons .main .gamepage--link {
   border: 2px solid #832293;
   padding: .5em 4em;
   font-weight: 600;
@@ -73,7 +80,7 @@
   text-decoration: none;
   color: #832293;
   border: 2px solid #832293;
-  padding: .3em 2.8em;
+  padding: .3em 4em;
   margin-top: 1em;
   font-weight: 600;
   background-color: white;
@@ -117,8 +124,8 @@
   height: 70%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (50px)[4];
-      grid-template-columns: repeat(4, 50px);
+  -ms-grid-columns: (60px)[4];
+      grid-template-columns: repeat(4, 60px);
   gap: .5em;
   place-content: center;
 }
@@ -200,23 +207,26 @@
           justify-content: center;
   gap: .5em;
   padding: .3em 0;
+  font-size: 1.3rem;
 }
 
-.main--gamepage .buttons button, .main--gamepage .buttons .gamepage--link {
+.main--gamepage .buttons button, .main--gamepage .buttons .restart--button, .main--gamepage .buttons .gamepage--link {
   padding: .3em 1em;
   border: none;
   background-color: #832293;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .main--gamepage .buttons .gamepage--link {
   border: 1px solid #832293;
   background-color: white;
   color: #832293;
-  padding: .1em 1em;
+  padding: .15em 1.1em;
   text-decoration: none;
+  font-size: 1.4rem;
 }
 
 .reveal {
@@ -247,6 +257,10 @@
   gap: .5em;
 }
 
+.footer--social .fa-brands {
+  font-size: 1.3rem;
+}
+
 .footer--social .fa-facebook {
   color: blue;
   background-color: white;
@@ -271,7 +285,6 @@ body {
   height: --webkit-fill-available;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 16px;
-  overflow: hidden;
 }
 
 #root {

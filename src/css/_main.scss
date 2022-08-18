@@ -25,13 +25,16 @@
     label{
         background-color: #832293;
         color: white;
-        padding: .5em 1.4em;
+        padding: .5em 0;
+        display: flex;
+        justify-content: center;
+        width: 200px;
         font-weight: 600;
     }
 
     select{
         border: 2px solid #832293;
-        width: 144px;
+        width: 200px;
         height: 32px;
         cursor: pointer;
     }
@@ -49,7 +52,7 @@
         text-decoration: none;
         color: #832293;
         border: 2px solid #832293;
-        padding: .3em 2.8em;
+        padding: .3em 4em;
         margin-top: 1em;
         font-weight: 600;
         background-color: white;
