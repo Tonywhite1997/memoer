@@ -77,7 +77,10 @@
         transform: translate(-50%, -50%);
         background-color: #832293;
         color: white;
-        padding: 5em 5em;
+        width: 90%;
+        padding-block: 5em;
+        display: flex;
+        justify-content: center;
         border-radius: .5em;
         opacity: .8;
     }
