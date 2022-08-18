@@ -5,7 +5,6 @@ import { LevelContext } from "./Context";
 export default function Homepage() {
   const [level, setLevel] = useContext(LevelContext);
 
-  console.log(level);
   function saveLevel(e) {
     setLevel(e.target.value);
   }

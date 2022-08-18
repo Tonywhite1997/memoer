@@ -6,8 +6,12 @@ function Footer() {
       <h4>Memoer</h4>
       <small>&#169;copywright. All rights reserved.</small>
       <div className="footer--social">
-        <i className="fa-brands fa-facebook"></i>
-        <i className="fa-brands fa-github"></i>
+        <a href="https://web.facebook.com/omodaratan1/" target="_blank">
+          <i className="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://github.com/Tonywhite1997" target="_blank">
+          <i className="fa-brands fa-github"></i>
+        </a>
       </div>
     </footer>
   );

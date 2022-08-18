@@ -1,21 +1,35 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Card from "./card";
 import { LevelContext, CardContext } from "./Context";
+import Confetti from "react-confetti";
 
 function Gamepage() {
   const [level, setLevel] = useContext(LevelContext);
   const [cardData] = useContext(CardContext);
   const [cards, setCards] = useState([]);
   const [openCardCount, setOpenCardCount] = useState(0);
+  const [userPerformance, setUserPerformance] = useState([
+    { level: "Easy", BestMoves: null },
+    { level: "Medium", BestMoves: null },
+    { level: "Hard", BestMoves: null },
+    { level: "VeryHard", BestMoves: null },
+    { level: "Impossible", BestMoves: null },
+  ]);
+
+  const [currentMoves, setCurrentMoves] = useState(0);
+
+  const [isWon, setIsWon] = useState(false);
 
   let shuffledCardArray;
 
   function getRandomCards(length, randomCardsArray) {
     let j = 0;
+    let array = [];
     while (randomCardsArray.length !== length) {
-      j = Math.floor(Math.random() * (length + 1));
+      j = Math.floor(Math.random() * cardData.length);
       if (!randomCardsArray.includes(cardData[j])) {
+        array.push(j);
         randomCardsArray.push(cardData[j]);
       }
     }
@@ -49,14 +63,17 @@ function Gamepage() {
 
   useEffect(() => {
     loadGame();
-  }, [level]);
+  }, []);
 
   function restart() {
     loadGame();
+    setIsWon(false);
+    setCurrentMoves(0);
+    setOpenCardCount(0);
   }
 
   function resetStates() {
-    setCards([level]);
+    setCards([]);
     setLevel("Easy");
   }
 
@@ -75,10 +92,16 @@ function Gamepage() {
     };
   }
 
+  function countUserMoves() {
+    setCurrentMoves((prevMoves) => prevMoves + 1);
+  }
+
   function revealCard(index) {
     setCards(
       cards.map((card, i) => {
         if (i === index && openCardCount !== 2 && !card.isFlipped) {
+          countUserMoves();
+
           setOpenCardCount((prevCount) => prevCount + 1);
           return { ...card, isFlipped: true };
         } else {
@@ -134,14 +157,118 @@ function Gamepage() {
     checkIfCardsMatch();
   });
 
-  //   console.log(openCardCount);
+  let userMoves;
+
+  if (level === "Easy") {
+    userMoves = userPerformance[0];
+  } else if (level === "Medium") {
+    userMoves = userPerformance[1];
+  } else if (level === "Hard") {
+    userMoves = userPerformance[2];
+  } else if (level === "Very Hard") {
+    userMoves = userPerformance[3];
+  } else {
+    userMoves = userPerformance[4];
+  }
+
+  const previousBestScoreRef = useRef();
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("Memoer"));
+    if (!data) return;
+    if (!isWon) {
+      if (level === "Easy") {
+        const { BestMoves } = data[0];
+        previousBestScoreRef.current = BestMoves;
+      } else if (level === "Medium") {
+        const { BestMoves } = data[1];
+        previousBestScoreRef.current = BestMoves;
+      } else if (level === "Hard") {
+        const { BestMoves } = data[2];
+        previousBestScoreRef.current = BestMoves;
+      } else if (level === "Very Hard") {
+        const { BestMoves } = data[3];
+        previousBestScoreRef.current = BestMoves;
+      } else {
+        const { BestMoves } = data[4];
+        previousBestScoreRef.current = BestMoves;
+      }
+    }
+  }, [isWon, level]);
+
+  useEffect(() => {
+    let allCardsMatched;
+    if (cards.length) {
+      allCardsMatched = cards.every((card) => card.isMatched);
+      if (allCardsMatched) {
+        setIsWon(true);
+      } else {
+        setIsWon(false);
+      }
+    }
+  }, [cards]);
+
+  function setBestMoves(index) {
+    setUserPerformance(
+      userPerformance.map((performance, i) => {
+        if (i === index) {
+          let moves;
+          if (performance.BestMoves === null) {
+            moves = currentMoves;
+          } else if (performance.BestMoves > currentMoves) {
+            moves = currentMoves;
+          } else {
+            moves = performance.BestMoves;
+          }
+          return {
+            ...performance,
+            BestMoves: moves,
+          };
+        } else {
+          return performance;
+        }
+      })
+    );
+  }
+
+  useEffect(() => {
+    if (isWon) {
+      if (level === "Easy") {
+        setBestMoves(0);
+      } else if (level === "Medium") {
+        setBestMoves(1);
+      } else if (level === "Hard") {
+        setBestMoves(2);
+      } else if (level === "Very Hard") {
+        setBestMoves(3);
+      } else {
+        setBestMoves(4);
+      }
+    }
+  }, [isWon]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("Memoer"));
+    if (data) {
+      setUserPerformance(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isWon) {
+      localStorage.setItem("Memoer", JSON.stringify(userPerformance));
+    }
+  }, [userPerformance]);
+
+  const [userWidth] = useState(window.innerWidth);
 
   return (
     <main className="main--gamepage">
+      {isWon && <Confetti width={userWidth} tweenDuration={3000} />}
       <div className="level--div">
         <p>Level: {level}</p>
-        <p>Best Moves:</p>
-        <p>Current Moves:</p>
+        <p>Best Score: {userMoves.BestMoves}</p>
+        <p>Current Moves: {currentMoves}</p>
       </div>
       <div className="card--div" style={cardDivStyle}>
         {cards.map((card, index) => {
@@ -162,6 +289,11 @@ function Gamepage() {
           Quit
         </Link>
       </div>
+      {isWon && currentMoves < previousBestScoreRef.current && (
+        <div className="best--score">
+          <h3>New Best Score: {userMoves.BestMoves}</h3>
+        </div>
+      )}
     </main>
   );
 }
